@@ -4,14 +4,18 @@
     <!-- TODO: Check mac migration support -->
   </install-step>
   <install-step num="1" title="Download App package">
-    <a class="btn btn-prowlarr" href="https://prowlarr.servarr.com/v1/update/master/updatefile?os=osx&runtime=netcore&arch=x64&installer=true">Download macOS App</a>
+    <a class="btn btn-prowlarr" href="https://prowlarr.servarr.com/v1/update/master/updatefile?os=osx&runtime=netcore&arch=x64&installer=true">Download Intel macOS App</a>
+    <a class="btn btn-prowlarr" href="https://prowlarr.servarr.com/v1/update/master/updatefile?os=osx&runtime=netcore&arch=arm64&installer=true">Download Arm macOS App</a>
   </install-step>
   <install-step num="2" title="Install App">
     <p>Open the archive and drag the Prowlarr icon to your Application folder.</p>
     <alert level="warning">Prowlarr is not compatible with OSX versions < 10.15 (Catalina) due to .NET incompatibilities.</alert>
   </install-step>
   <install-step num="3" title="Self-sign Prowlarr">
-    <p>Self-sign Prowlarr `codesign --force --deep -s - Prowlarr.app`</p>
+    <p>
+      Self-sign Prowlarr:
+      <pre><code class="bash">codesign --force --deep -s - /Applications/Prowlarr.app && xattr -rd com.apple.quarantine /Applications/Prowlarr.app</code></pre>
+    </p>
   </install-step>
   <install-step num="4" title="Start Prowlarr">
     <p>Open Prowlarr.app in your Application folder.</p>
@@ -28,7 +32,7 @@
   <h5>Manual Install</h5>
   <p>
     It is possible to install Prowlarr manually using the
-    <a href="https://prowlarr.servarr.com/v1/update/master/updatefile?os=osx&runtime=netcore&arch=x64">.tar.gz download</a>. However in that case you must manually deal with dependencies, installation and permissions.
+    <a href="https://prowlarr.servarr.com/v1/update/master/updatefile?os=osx&runtime=netcore&arch=x64">Intel .tar.gz download</a> or <a href="https://prowlarr.servarr.com/v1/update/master/updatefile?os=osx&runtime=netcore&arch=arm64">Arm .tar.gz download</a> However in that case you must manually deal with dependencies, installation and permissions.
   </p>
   <h5>Docker container</h5>
   <p>
